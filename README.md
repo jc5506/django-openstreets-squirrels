@@ -7,4 +7,7 @@
 pip install -r requirements.txt
 ```
 
+# learn to commit
+1. 001
+2. 002
 
