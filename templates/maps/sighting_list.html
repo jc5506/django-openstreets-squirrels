@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+      <title>Squirrels Sightings</title>
+  </head>
+  <body>
+    <div class="container">
+        <h1 class="text-center">Squirrels Sightings</h1>
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>Unique Squirrel ID</th>
+                <th>Date</th>
+                <th>Link to unique squirrel sighting</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for sight in ls.object_list %}
+                <tr>
+                <td>{{ sight.unique_squirrel_id }}</td>
+                <td>{{ sight.date|date:'m/d/Y' }}</td>
+                <td>
+                    <a href="" class="btn btn-primary">View Detail</a>
+                </td>
+                </tr>
+            {% empty %}
+                <tr>
+                <td colspan="3">No Data.</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    <nav aria-label="Page navigation">
+  <ul class="pagination">
+    <li class="page-item{% if 1 == page %} disabled{% endif %}">
+      <a class="page-link" href="{% if ls.has_previous %}{{ request.path }}?page={{ ls.previous_page_number }}&per_page={{ per_page }}{% else %}#{% endif %}" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+  {% for pn in page_no_ls %}
+      <li class="page-item{% if page == pn %} active{% endif %}"><a class="page-link" href="{% if page == pn %}#{% else %}{{ request.path }}?page={{ pn }}&per_page={{ per_page }}{% endif %}">{{ pn }}</a></li>
+  {% endfor %}
+    <li class="page-item{% if ls.paginator.num_pages == page %} disabled{% endif %}">
+      <a class="page-link" href="{% if ls.has_next %}{{ request.path }}?page={{ ls.next_page_number }}&per_page={{ per_page }}{% else %}#{% endif %}" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>
