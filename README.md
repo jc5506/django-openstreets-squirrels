@@ -11,3 +11,7 @@ pip install -r requirements.txt
 1. 001
 2. 002
 
+# thanks to 
+1. person one
+2. person two
+
