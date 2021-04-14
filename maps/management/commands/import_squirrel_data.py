@@ -54,7 +54,7 @@ class Command(BaseCommand):
 
                 unique_squirrel_id = item['Unique Squirrel ID']
                 hectare = item['Hectare']
-                shift = item['Shift'],
+                shift = item['Shift']  # fix remove ",", cause comma make this value tuple
                 date = parse_date(item['Date'])
 
                 hectare_squirrel_number = item['Hectare Squirrel Number']
