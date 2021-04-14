@@ -49,4 +49,4 @@ class Sight(models.Model):
     class Meta:
         ordering = '-id',
         verbose_name = 'Sight of Squirrel'
-        verbose_name_plural = 'Sight if Squirrels'
+        verbose_name_plural = 'Sight of Squirrels'
