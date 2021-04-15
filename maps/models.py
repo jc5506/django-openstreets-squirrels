@@ -45,7 +45,8 @@ def unique_squirrel_id_validate(s: str):
     if hectare not in [i for i, j in hectare_choices]:
         raise ValidationError(message=[
             error_massage_base,
-            f'Hectare part should be one of {"|".join([i for i, j in hectare_choices])}'
+            f'Hectare part should be from 1A-42I.',
+            'The digits part is 1-42, and the letter part is from A-I',
             ])
     if shift not in ['AM', 'PM']:
         raise ValidationError(

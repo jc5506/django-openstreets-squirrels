@@ -1,7 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, reverse
 from .models import Sight
 from django.core.paginator import PageNotAnInteger, InvalidPage, EmptyPage, Paginator
 from .forms import SightCreateForm, SightUpdateForm
+from django.contrib import messages
 
 
 def index(request):
@@ -49,8 +50,18 @@ def sighting_list(request):
     if paginator.num_pages <= 5:
         page_no_ls = list(range(paginator.num_pages))
     else:
+        if page <= 5:
+            start = 1
+            end = 11
+        elif page >= paginator.num_pages - 5:
+            start = paginator.num_pages - 5
+            end = paginator.num_pages + 1
+        else:
+            start = page - 5
+            end = page + 5
+
         page_no_ls = []
-        for i in range(page-5, page+5):
+        for i in range(start, end):
             if i < 1:
                 continue
             if i > paginator.num_pages:
@@ -58,13 +69,21 @@ def sighting_list(request):
             page_no_ls.append(i)
 
     return render(request, 'maps/sighting_list.html', context=dict(
-        ls=ls, page=page, per_page=per_page, page_no_ls=page_no_ls
+        ls=ls, page=page, per_page=per_page, page_no_ls=page_no_ls, title='Squirrels Sightings',
     ))
 
 
 def sight_create(request):
     if request.method == 'POST':
-        pass
+        form = SightCreateForm(request.POST)
+        if form.is_valid():
+            sight = form.save(commit=False)
+            hectare, shift, d, hectare_squirrel_number = sight.unique_squirrel_id.split('-')
+            sight.hectare_squirrel_number = int(hectare_squirrel_number)
+            sight.save()
+            messages.success(request, 'Squirrel sighting created')
+            return redirect(reverse('maps:sighting_list'))
     else:
-        pass
-    return render(request, '', context={})
+        form = SightCreateForm()
+
+    return render(request, 'maps/sighting_create.html', context={'form': form})

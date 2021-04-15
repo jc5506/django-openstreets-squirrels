@@ -11,4 +11,5 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('map', views.map, name='map'),
     path('sightings', views.sighting_list, name='sighting_list'),
+    path('sightings/add', views.sight_create, name='sighting_create'),
     ]

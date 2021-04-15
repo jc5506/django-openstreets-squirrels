@@ -20,12 +20,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-(x%tndv8o+7j&ejqu^*^%^tk0qs$#5o8uu9pq3b=*7z^vp8e0('
+SECRET_KEY = 'django-insecure-36mk#a&z3gkx6c+e@0ayp(k=-2w(@j!mg291^ja0h7c7%9g%u8'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'maps.apps.MapsConfig',
+    'bootstrap4',
 ]
 
 MIDDLEWARE = [
@@ -131,3 +132,42 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+BOOTSTRAP4 = {
+    "css_url": {
+        "href": "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css",
+        "integrity": "sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm",
+        "crossorigin": "anonymous",
+    },
+    "javascript_url": {
+        "url": "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js",
+        "integrity": "sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl",
+        "crossorigin": "anonymous",
+    },
+    "theme_url": None,
+    "jquery_url": {
+        "url": "https://code.jquery.com/jquery-3.2.1.min.js",
+    },
+    "jquery_slim_url": {
+        "url": "https://code.jquery.com/jquery-3.2.1.slim.min.jss",
+    },
+    "popper_url": {
+        "url": "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js",
+    },
+    "javascript_in_head": False,
+    "include_jquery": True,
+    "use_i18n": False,
+    "horizontal_label_class": "col-md-3",
+    "horizontal_field_class": "col-md-9",
+    "set_placeholder": True,
+    "required_css_class": "",
+    "error_css_class": "is-invalid",
+    "success_css_class": "is-valid",
+    "formset_renderers": {"default": "bootstrap4.renderers.FormsetRenderer"},
+    "form_renderers": {"default": "bootstrap4.renderers.FormRenderer"},
+    "field_renderers": {
+        "default": "bootstrap4.renderers.FieldRenderer",
+        "inline": "bootstrap4.renderers.InlineFieldRenderer",
+    },
+}
