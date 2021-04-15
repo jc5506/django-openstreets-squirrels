@@ -40,10 +40,17 @@ class SightCreateForm(forms.ModelForm):
         unique_squirrel_id_validate(unique_squirrel_id)
         return unique_squirrel_id
 
+    def clean_age(self):
+        age = self.cleaned_data.get('age')
+        if age not in []:
+            raise forms.ValidationError(['Age is required', 'Ether Adult or Juvenile'])
+        return age
+
     def clean_shift(self):
         shift_data = self.cleaned_data.get('shift')
         if shift_data not in ['PM', 'AM']:
             raise forms.ValidationError(['Shift is required', 'Ether PM or AM'])
+        return shift_data
 
     def clean_date(self):
         date = self.cleaned_data.get('date')
@@ -88,10 +95,17 @@ class SightUpdateForm(forms.ModelForm):
         unique_squirrel_id_validate(unique_squirrel_id)
         return unique_squirrel_id
 
+    def clean_age(self):
+        age = self.cleaned_data.get('age')
+        if age not in []:
+            raise forms.ValidationError(['Age is required', 'Ether Adult or Juvenile'])
+        return age
+
     def clean_shift(self):
         shift_data = self.cleaned_data.get('shift')
         if shift_data not in ['PM', 'AM']:
             raise forms.ValidationError(['Shift is required', 'Ether PM or AM'])
+        return shift_data
 
     def clean_date(self):
         date = self.cleaned_data.get('date')

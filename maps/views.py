@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from .models import Sight
 from django.core.paginator import PageNotAnInteger, InvalidPage, EmptyPage, Paginator
 from .forms import SightCreateForm, SightUpdateForm
@@ -87,3 +87,17 @@ def sight_create(request):
         form = SightCreateForm()
 
     return render(request, 'maps/sighting_create.html', context={'form': form})
+
+
+def sight_update(request, unique_squirrel_id):
+    sight = get_object_or_404(klass=Sight, unique_squirrel_id=unique_squirrel_id)
+    if request.method == 'POST':
+        form = SightUpdateForm(data=request.POST, instance=sight)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Successfully updated')
+    else:
+        form = SightUpdateForm(instance=sight)
+    return render(request, 'maps/sighting_update.html', context=dict(
+        title=f'Update {unique_squirrel_id}', form=form
+        ))

@@ -53,6 +53,7 @@ class Command(BaseCommand):
                 latitude = item['Y']
 
                 unique_squirrel_id = item['Unique Squirrel ID']
+
                 hectare = item['Hectare']
                 shift = item['Shift']  # fix remove ",", cause comma make this value tuple
                 date = parse_date(item['Date'])
@@ -81,6 +82,12 @@ class Command(BaseCommand):
                 indifferent = parse_boolean(item['Indifferent'])
                 runs_from = parse_boolean(item['Runs from'])
                 other_interactions = item['Other Interactions']
+
+                i = Sight.objects.filter(unique_squirrel_id=unique_squirrel_id).first()
+                if i:
+                    self.stdout.write(f'{longitude}/{latitude}/{unique_squirrel_id} existed already', ending='\n')
+                    continue
+
                 Sight.objects.create(
                     longitude=longitude, latitude=latitude,
                     unique_squirrel_id=unique_squirrel_id,
@@ -97,5 +104,5 @@ class Command(BaseCommand):
                     )
                 t += 1
                 self.stdout.write(f'{longitude}/{latitude}/{unique_squirrel_id} imported', ending='\n')
-            self.stdout.write(f'{t} rows imported in total')
+            self.stdout.write(f'{t} new rows imported in total')
 

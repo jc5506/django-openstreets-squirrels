@@ -18,7 +18,7 @@
                 <td>{{ sight.unique_squirrel_id }}</td>
                 <td>{{ sight.date|date:'m/d/Y' }}</td>
                 <td>
-                    <a href="" class="btn btn-primary">View Detail</a>
+                    <a href="{% url 'maps:sighting_update' unique_squirrel_id=sight.unique_squirrel_id %}" class="btn btn-primary">View Detail</a>
                 </td>
                 </tr>
             {% empty %}
