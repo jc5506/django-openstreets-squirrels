@@ -36,3 +36,9 @@ python manage.py export_squirrel_data out.csv
 7. Bootstrap 4 <https://getbootstrap.com/docs/4.0/getting-started/introduction/>
 8. django-bootstrap4 <https://django-bootstrap4.readthedocs.io/en/latest/>
 9. DateTimePicker jQuery plugin select date and time <https://xdsoft.net/jqplugins/datetimepicker/>
+
+# group name and section
+Project Group 23, Section 1
+
+# A list containing the UNI for each member on the team
+UNIs: [jc5506,jz3279]
