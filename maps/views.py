@@ -90,6 +90,7 @@ def sight_create(request):
 
 
 def sight_update(request, unique_squirrel_id):
+    """view/update a sighting"""
     sight = get_object_or_404(klass=Sight, unique_squirrel_id=unique_squirrel_id)
     if request.method == 'POST':
         form = SightUpdateForm(data=request.POST, instance=sight)
@@ -101,3 +102,26 @@ def sight_update(request, unique_squirrel_id):
     return render(request, 'maps/sighting_update.html', context=dict(
         title=f'Update {unique_squirrel_id}', form=form
         ))
+
+
+def sight_stats(request):
+    """sighting stats"""
+    page = request.GET.get('page', '1')
+    try:
+        page = int(page)
+    except (TypeError, ValueError):
+        page = 1
+    per_page = request.GET.get('per_page', 15)
+    try:
+        per_page = int(per_page)
+    except (TypeError, ValueError):
+        per_page = 15
+    ls = Sight.objects.all()
+    paginator = Paginator(object_list=ls, per_page=per_page)
+    try:
+        ls = paginator.page(page)
+    except PageNotAnInteger:
+        ls = paginator.page(1)
+    except EmptyPage:
+        ls = paginator.page(paginator.num_pages)
+    return render(request, 'maps/sighting_stats.html', context={'ls': ls, 'title': 'Signtings Stats'})

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+        <h1 class="text-center">Squirrels Sightings Stats</h1>
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>Latitude</th>
+                <th>Longitude</th>
+                <th>Unique Squirrel ID</th>
+                <th>Shift</th>
+                <th>Date</th>
+                <th>Age</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for sight in ls.object_list %}
+                <tr>
+                <td>{{ sight.latitude }}</td>
+                <td>{{ sight.longitude }}</td>
+                <td>{{ sight.unique_squirrel_id }}</td>
+                <td>{{ sight.shift|default_if_none:'---' }}</td>
+                <td>{{ sight.date|date:'m/d/Y' }}</td>
+                <td>
+                    {{ sight.age|default_if_none:'---' }}
+                </td>
+                </tr>
+            {% empty %}
+                <tr>
+                <td colspan="3">No Data.</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% load bootstrap4 %}
+    {% bootstrap_pagination ls %}
+    </div>
+{% endblock %}

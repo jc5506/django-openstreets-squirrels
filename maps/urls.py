@@ -12,4 +12,5 @@ urlpatterns = [
     path('sightings', views.sighting_list, name='sighting_list'),
     path('sightings/add', views.sight_create, name='sighting_create'),
     re_path(r'^sightings/(?P<unique_squirrel_id>[0-9]{1,2}[A-I]-[AP]M-\d{4}-\d+)$', views.sight_update, name='sighting_update'),
+    path('sightings/stats', views.sight_stats, name='sighting_stats'),
     ]
