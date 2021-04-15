@@ -42,7 +42,7 @@ class SightCreateForm(forms.ModelForm):
 
     def clean_age(self):
         age = self.cleaned_data.get('age')
-        if age not in []:
+        if age not in ['Adult', 'Juvenile']:
             raise forms.ValidationError(['Age is required', 'Ether Adult or Juvenile'])
         return age
 
@@ -97,7 +97,7 @@ class SightUpdateForm(forms.ModelForm):
 
     def clean_age(self):
         age = self.cleaned_data.get('age')
-        if age not in []:
+        if age not in ['Adult', 'Juvenile']:
             raise forms.ValidationError(['Age is required', 'Ether Adult or Juvenile'])
         return age
 
