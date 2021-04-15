@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Sight
 from django.core.paginator import PageNotAnInteger, InvalidPage, EmptyPage, Paginator
+from .forms import SightCreateForm, SightUpdateForm
 
 
 def index(request):
@@ -59,3 +60,11 @@ def sighting_list(request):
     return render(request, 'maps/sighting_list.html', context=dict(
         ls=ls, page=page, per_page=per_page, page_no_ls=page_no_ls
     ))
+
+
+def sight_create(request):
+    if request.method == 'POST':
+        pass
+    else:
+        pass
+    return render(request, '', context={})
