@@ -61,11 +61,11 @@ class Command(BaseCommand):
                 age = item['Age']
                 primary_fur_color = item['Primary Fur Color']
                 highlight_fur_color = item['Highlight Fur Color']
-                combination_of_primary_and_highlight_color = item['Combination of Primary and Highlight Color']
+                # combination_of_primary_and_highlight_color = item['Combination of Primary and Highlight Color']
                 color_notes = item['Color notes']
                 location = item['Location']
                 above_ground_sighter_measurement = item['Above Ground Sighter Measurement']
-                Specific_Location = item['Specific Location']
+                specific_location = item['Specific Location']
                 running = parse_boolean(item['Running'])
                 chasing = parse_boolean(item['Chasing'])
                 climbing = parse_boolean(item['Climbing'])
@@ -87,10 +87,10 @@ class Command(BaseCommand):
                     hectare=hectare, shift=shift, date=date,
                     hectare_squirrel_number=hectare_squirrel_number, age=age, primary_fur_color=primary_fur_color,
                     highlight_fur_color=highlight_fur_color,
-                    combination_of_primary_and_highlight_color=combination_of_primary_and_highlight_color,
+                    # combination_of_primary_and_highlight_color=combination_of_primary_and_highlight_color,
                     color_notes=color_notes, location=location,
                     above_ground_sighter_measurement=above_ground_sighter_measurement,
-                    Specific_Location=Specific_Location, running=running, chasing=chasing, climbing=climbing,
+                    specific_location=specific_location, running=running, chasing=chasing, climbing=climbing,
                     eating=eating, foraging=foraging, other_activities=other_activities, kuks=kuks, quaas=quaas,
                     moans=moans, tail_flags=tail_flags, tail_twitches=tail_twitches, approaches=approaches,
                     indifferent=indifferent, runs_from=runs_from, other_interactions=other_interactions,

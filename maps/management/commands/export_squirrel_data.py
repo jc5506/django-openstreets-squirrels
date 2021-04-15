@@ -68,7 +68,7 @@ class Command(BaseCommand):
                     "Color notes": sight.color_notes,
                     "Location": sight.location,
                     "Above Ground Sighter Measurement": sight.above_ground_sighter_measurement,
-                    "Specific Location": sight.Specific_Location,
+                    "Specific Location": sight.specific_location,
                     "Running": format_boolean(sight.running),
                     "Chasing": format_boolean(sight.chasing),
                     "Climbing": format_boolean(sight.climbing),
