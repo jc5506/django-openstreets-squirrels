@@ -41,4 +41,4 @@ python manage.py export_squirrel_data out.csv
 Project Group 23, Section 1
 
 # A list containing the UNI for each member on the team
-UNIs: [jc5506,jz3279]
+UNIs: [jc5506, jz3279]
