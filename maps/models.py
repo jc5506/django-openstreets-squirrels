@@ -80,7 +80,8 @@ class Sight(models.Model):
             MinValueValidator(-90, message='Longitude coordinate can be as big as -90 degrees')],
         null=False,
         blank=False)
-    unique_squirrel_id = models.CharField(verbose_name='Unique Squirrel ID', max_length=16, null=False, blank=False, validators=[unique_squirrel_id_validate])
+    unique_squirrel_id = models.CharField(verbose_name='Unique Squirrel ID', max_length=32, null=False, blank=False,
+                                          validators=[unique_squirrel_id_validate], unique=True, db_index=True)
 
     hectare = models.CharField(verbose_name='Hectare', max_length=16, null=True, blank=True, choices=hectare_choices)
     shift = models.CharField(verbose_name='Shift', max_length=8, null=True, blank=True, choices=shift_choices)

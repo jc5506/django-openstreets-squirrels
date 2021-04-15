@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% load static %}
+{% block style %}
+    <link rel="stylesheet" href="{% static 'jquery-datetimepicker/jquery.datetimepicker.min.css' %}">
+{% endblock %}
+{% block content %}
+<div class="container">
+<h1 class="text-center">Update Sighting</h1>
+    <hr>
+<form action="" method="post" class="form">
+  {% csrf_token %}
+  {% bootstrap_form form %}
+  {% buttons %}
+    <button type="submit" class="btn btn-primary">
+      Submit
+    </button>
+  {% endbuttons %}
+</form>
+</div>
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'jquery-datetimepicker/jquery.datetimepicker.full.min.js' %}"></script>
+    <script>
+    jQuery('#id_date').datetimepicker({
+        format:'Y-m-d',
+        lang:'en',
+        timepicker:false,
+});
+    </script>
+{% endblock %}
